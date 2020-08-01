@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import logo from '../src/images/insta.png';
 import './App.css';
 import Post from './Post';
+import {db} from './firebase';
+
 
 function App() {
 
-  const [posts, setPosts] = useState([
-    {
-      username:"rahul8" ,
-      caption:"nice pics clicks",
-      imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXBQO3AoOMTBDfksSTZW9YKPk2GNCZmlunUg&usqp=CAU"
-    },
+  const [posts, setPosts] = useState([]);
 
-    {
-      username:"rahul8" ,
-      caption:"nice pics clicks",
-      imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXBQO3AoOMTBDfksSTZW9YKPk2GNCZmlunUg&usqp=CAU"
-    }
-  ]);
-     /*State is like short term memory store in  react */
+  useEffect(() => {
+    //this where the code runs
+   db.collection('posts').onSnapshot(snapshot => {
+
+    setPosts(snapshot.docs.map(doc => doc.data()));
+     //everytime new post is added this code fires
+
+   })
+  }, []);
+                                                                
   return (
     <div className="App">
  
