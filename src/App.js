@@ -98,13 +98,20 @@ return() =>{
       })
     })                          //passing from state variable
     .catch((error)=> alert(error.message))
+    setOpen(false);
 
   }
-
+                                                           //WE USED CONDTION RENDERING
 
 
   const signIn = (event) => {
     event.preventDefault();
+
+    auth
+    .signInWithEmailAndPassword(email , password)
+    .catch((error) => alert(error.message))
+
+    setOpenSignIn(false);
   }
 
 
