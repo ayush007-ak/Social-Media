@@ -7,6 +7,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Button , Input} from '@material-ui/core';
 import { auth } from './firebase';
+import ImageUpload from './ImageUpload';
 
 
 
@@ -121,47 +122,50 @@ return() =>{
                                                                 
   return (
     <div className="App">
-  <Modal
-        open={open}       //inline function
-        onClose={() => setOpen(false)}  >     
+         
+       <ImageUpload/>
+
+        <Modal
+          open={open}       //inline function
+          onClose={() => setOpen(false)}  >     
         
-        <div style={modalStyle} className={classes.paper}>
+          <div style={modalStyle} className={classes.paper}>
         
 
-        <form className="app_signup">
+           <form className="app_signup">
           
 
-          <center>
-              < img
-               className="app_headerImage"
-               src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS25MGr4FC2zCXvHvxb56Vu2ZpkeoVv9vRkAg&usqp=CAU"
-               alt=""/>
-          </center> 
-            
-          <Input placeholder="username"
-             type="text"
-            value={username}
-              onChange={(e) => setUsername(e.target.value)}
+            <center>
+               < img
+                className="app_headerImage"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS25MGr4FC2zCXvHvxb56Vu2ZpkeoVv9vRkAg&usqp=CAU"
+                alt=""/>
+            </center> 
+             
+            <Input placeholder="username"
+               type="text"
+               value={username}
+               onChange={(e) => setUsername(e.target.value)}
             /> 
  
-            <Input placeholder="email"
-            type="text"
-           value={email}
+             <Input placeholder="email"
+             type="text"
+            value={email}
              onChange={(e) => setEmail(e.target.value)}
             />
  
-           <Input placeholder="password"
+            <Input placeholder="password"
              type="password"
              value={password}
-             onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
 
-            
+             
  
-            <Button  type="Submit" onClick={signUp}>Sign Up</Button>
-
-         </form> 
-           </div>
+             <Button  type="Submit" onClick={signUp}>Sign Up</Button>
+ 
+           </form> 
+            </div>
          </Modal>          
 
          
