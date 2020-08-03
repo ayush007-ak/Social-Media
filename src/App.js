@@ -77,7 +77,7 @@ return() =>{
 //UseEffectruns piece of code bosed on specific condtion //runs code when page refreshes
   useEffect(() => {
     //this where the code runs
-   db.collection('posts').onSnapshot(snapshot => {
+   db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
 
     setPosts(snapshot.docs.map(doc =>  ({ id: doc.id , post:doc.data()})));
      //everytime new post is added this code fires
@@ -120,15 +120,7 @@ return() =>{
   return (
     <div className="App">
 
-         {user?.displayName ? (                                 //?=optional
-            <ImageUpload username={user.displayName}/>
-
-         ): (
-           <h1>Sorry you need to login to upload anything</h1>
-         )}
-      
-
-        <Modal
+          <Modal
           open={open}       //inline function
           onClose={() => setOpen(false)}  >     
         
@@ -152,23 +144,23 @@ return() =>{
             /> 
  
              <Input placeholder="email"
-             type="text"
-            value={email}
-             onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
  
-            <Input placeholder="password"
-             type="password"
-             value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              <Input placeholder="password"
+              type="password"
+              value={password}
+               onChange={(e) => setPassword(e.target.value)}
             />
 
              
  
-             <Button  type="Submit" onClick={signUp}>Sign Up</Button>
+              <Button  type="Submit" onClick={signUp}>Sign Up</Button>
  
-           </form> 
-            </div>
+             </form> 
+              </div>
          </Modal>          
 
          
@@ -227,10 +219,7 @@ return() =>{
     <div className="app_header">
       <img className="app_headerImage"
       src={logo} height="80" width="100"alt=""/>
-    </div>
-
-
-      {user ? (
+{user ? (
         <Button onClick={() => auth.signOut()}>Logout</Button>
       ): ( 
         <div className="app_loginContainer">
@@ -242,6 +231,10 @@ return() =>{
       )}
     
 
+    </div>
+
+
+      
     <h1>Hey there</h1>
 {
      posts.map(({id , post}) => (
@@ -249,6 +242,14 @@ return() =>{
      
   ))
 }
+
+
+{user?.displayName ? (                                 //?=optional
+            <ImageUpload username={user.displayName}/>
+
+         ): (
+           <h1>Sorry you need to login to upload anything</h1>
+         )}
     
     </div>
   );
