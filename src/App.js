@@ -116,14 +116,17 @@ return() =>{
   }
 
 
-  const handleClose = () =>{
-    setOpen(false);
-  };
                                                                 
   return (
     <div className="App">
-         
-       <ImageUpload/>
+
+         {user?.displayName ? (                                 //?=optional
+            <ImageUpload username={user.displayName}/>
+
+         ): (
+           <h1>Sorry you need to login to upload anything</h1>
+         )}
+      
 
         <Modal
           open={open}       //inline function
