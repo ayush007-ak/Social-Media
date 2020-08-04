@@ -7,6 +7,22 @@
   background-color:#fafafa;
 
 }
+
+
+
+.app_posts{         
+  padding: 20px;   
+  display: flex;
+  justify-content: center;
+
+}
+
+
+.app_postsRight{
+  margin-left: 20px;
+}
+
+
 .app_header {
   background-color: white;
   border-bottom: 1px solid lightgray;
