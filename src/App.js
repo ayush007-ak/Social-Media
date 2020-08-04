@@ -239,7 +239,7 @@ return() =>{
       
    {
      posts.map(({id , post}) => (
-    <Post key={id} username={post.username} caption={post.caption}imageUrl={post.imageUrl}/>
+    <Post key={id} postId={id} username={post.username} user={user} caption={post.caption}imageUrl={post.imageUrl}/>     //start collection ke andar jaega sab firebase ke
      
   ))
 }
@@ -262,7 +262,7 @@ return() =>{
 />
       
    </div>
-   
+
  </div>
 
 
