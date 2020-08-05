@@ -4,7 +4,7 @@ import Avatar from "@material-ui/core/Avatar";
 import {db} from './firebase';
 import firebase from 'firebase';
 
-function Post({postId ,username , user, caption , imageUrl}){   /* Destructor with ES6 syntx*/
+function Post({postId , username , user ,caption , imageUrl}){   /* Destructor with ES6 syntx*/
     
     const [comments , setComments] = useState([]);
     const [comment, setComment] = useState('');
@@ -31,14 +31,16 @@ function Post({postId ,username , user, caption , imageUrl}){   /* Destructor wi
 
 
        const postComment = (event) =>{
-           event.preventDefault();
 
+         event.preventDefault();
            db.collection("posts").doc(postId).collection("comments").add({
-               text:  comment,
-               username: user.displayName,
-               timestamp: firebase.firestore.FieldValue.serverTimestamp()
-           });
-           setComment('');
+             text: comment,
+             username: user.displayName,
+             timestamp: firebase.firestore.FieldValue.serverTimestamp()
+
+             });
+          setComment('');
+          
 
        }
 
@@ -54,34 +56,41 @@ function Post({postId ,username , user, caption , imageUrl}){   /* Destructor wi
            <h3>{username}</h3>
             </div>
 
-            
-            
+              <img className="post_image" src={imageUrl} alt=""/>
+
            
-
-            <img className="post_image" src={imageUrl}/>
-
-            {/* header -> avatar -> username*/}
-    <h4 className="post_text"><strong> {username}</strong> {caption}</h4> 
     
+       <h4 className="post_text"><strong> {username}</strong> {caption}</h4>
+       
+       
+       <div>
+         {comments.map((comment) => (
+           <p><strong> {comment.username}</strong>{comment.text}</p>
+         ))}
+       </div>
+        
 
 
 
-    <form className="post_commentBox"> 
-        <input className="post_input"
-        type="text"
-        placeholder="Add a comment..."             //Update the state when we type in
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}/> 
+        {user && (
+          <form className="post_commentBox"> 
+      <input className="post_input"
+          type="text"
+         placeholder="Add a comment..."             //Update the state when we type in
+         value={comment}
+         onChange={(e) => setComment(e.target.value)}/> 
 
 
-         <button className="post_button"
-    disabled={!comment}
-    type="submit"
-    onClick={postComment}>
-        post
-    </button> 
-    </form>
-
+          <button className="post_button"
+         disabled={!comment}
+        type="submit"
+        onClick={postComment}>
+         post
+       </button> 
+      </form>
+        )}
+      
+  
    
 
         </div>
