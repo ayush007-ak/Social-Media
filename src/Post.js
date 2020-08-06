@@ -51,7 +51,7 @@ function Post({postId , username , user ,caption , imageUrl}){   /* Destructor w
             <div className="post_header">
               <Avatar className="post_avatar"
               alt='ayush98'
-              src="https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/95/4e/05/954e0568-9163-b46b-f610-e21b6131bf46/AppIcon-0-1x_U007emarketing-0-5-0-0-sRGB-85-220.png/246x0w.png"/> 
+              src="https://f1.pngfuel.com/png/169/1023/715/login-logo-user-users-group-customer-education-button-typeface-credential-png-clip-art.png"/> 
 
            <h3>{username}</h3>
             </div>
@@ -63,7 +63,7 @@ function Post({postId , username , user ,caption , imageUrl}){   /* Destructor w
        <h4 className="post_text"><strong> {username}</strong> {caption}</h4>
        
        
-       <div>
+       <div className="post_comments">
          {comments.map((comment) => (
            <p><strong> {comment.username}</strong>{comment.text}</p>
          ))}

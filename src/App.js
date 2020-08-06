@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react';
-import logo from '../src/images/insta.png';
+
 import './App.css';
 import Post from './Post';
 import {db} from './firebase';
@@ -134,7 +134,7 @@ return() =>{
             <center>
                < img
                 className="app_headerImage"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS25MGr4FC2zCXvHvxb56Vu2ZpkeoVv9vRkAg&usqp=CAU"
+                src="https://cdn2.downdetector.com/static/uploads/logo/Instagram_Logo_Large.png"
                 alt=""/>
             </center> 
              
@@ -179,7 +179,7 @@ return() =>{
           <center>
               < img
                className="app_headerImage"
-               src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS25MGr4FC2zCXvHvxb56Vu2ZpkeoVv9vRkAg&usqp=CAU"
+               src="https://cdn2.downdetector.com/static/uploads/logo/Instagram_Logo_Large.png"
                alt=""/>
           </center> 
             
@@ -219,7 +219,7 @@ return() =>{
 
     <div className="app_header">
       <img className="app_headerImage"
-      src={logo} height="80" width="100"alt=""/>
+      src="https://cdn2.downdetector.com/static/uploads/logo/Instagram_Logo_Large.png" height="80" width="100"alt=""/>
 {user ? (
         <Button onClick={() => auth.signOut()}>Logout</Button>
       ): ( 
